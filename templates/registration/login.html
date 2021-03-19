@@ -1,0 +1,24 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-md-12 ">
+                <div class="card card-primary">
+                    <div class="card-body bg-danger bg-gradient">
+
+                        <h2>Log In</h2>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit">Log In</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

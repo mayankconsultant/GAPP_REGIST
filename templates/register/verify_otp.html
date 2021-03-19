@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid ">
+    <div class="row my-3 text-center bg-info">
+        <h1 class="mx-auto ">Zain Thanks you to visit Registration System </h1>
+    </div>
+    <div class="row ml-2 mt-2 bg-warning">
+
+        <!--<form method ="post"></form>-->
+
+        <form method="post" action="url {'">
+            {% csrf_token %}
+            <!--  {{ form | crispy }}-->
+            <div class="col-md-6">
+                {{ form.errors }}
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-5">
+                    <div class="col-md-3 ">
+                        {{msisdn }}
+                    </div>
+
+                </div>
+                <div class="form-group col-md-5">
+                    <div class="col-md-3 hide">
+                        {{ form.otp1 }}
+                    </div>
+
+                </div>
+
+                <div class="form-group col-md-5">
+                    <div class="col-md-6">
+                        <label> {{ form.otp.label_tag }}
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        {{ form.otp }}
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!--  {% crispy form %}-->
+
+
+            <input type="submit" value="Next">
+
+
+        </form>
+
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block endjava   %}
+
+{% endblock endjava  %}
+    

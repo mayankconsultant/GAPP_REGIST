@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid ">
+    <div class="row my-3 text-center bg-info">
+        <h1 class="mx-auto">
+  <span>
+    <img src={% static 'Zain.png' %} alt="" width="30" >
+
+  </span>
+            Zain Thanks you to visit Registration System
+        </h1>
+    </div>
+    <div class="row ml-2 mt-2 bg-warning">
+
+        {{pic }}
+        <img src="{{ pic }}" alt="NO_DATA" style="width:40%; height:40%">
+        <h1> {{ data }} </h1>
+
+
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block endjava   %}
+
+{% endblock endjava  %}
+    

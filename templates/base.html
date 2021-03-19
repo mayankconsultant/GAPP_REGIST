@@ -1,0 +1,54 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+
+        {% endblock title %} Register
+    </title>
+
+    {% include 'app_css.html'%}
+
+
+    {% block header %}
+
+    {% endblock header %}
+
+</head>
+<body>
+
+
+{% include 'app_js.html'%}
+{% block upjava %}
+
+
+{% endblock upjava %}
+
+<script>
+  //$enable-gradients(true);
+
+
+</script>
+
+{% if messages %}
+
+{% for m in messages %}
+<div class="alert {{m.tags}} alert-dismissible bg-secondary text-warning fs-3" role="alert">
+    {{ m }}
+    {% endfor %}
+</div>
+{% endif %}
+
+{% block content %}
+
+{% endblock content %}
+
+
+{% block endjava %}
+
+{% endblock endjava %}
+
+</body>
+</html>

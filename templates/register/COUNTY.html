@@ -1,0 +1,7 @@
+{% for county in COUNTY %}
+{% if forloop.counter == 1 %}
+<option value="{{ county.id }}" selected>{{ county }}</option>
+{% else %}
+<option value="{{ county.id }}">{{ county }}</option>
+{% endif %}
+{% endfor %}

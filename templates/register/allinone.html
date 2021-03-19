@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block  header %}
+
+
+{% endblock header %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row mt-3">
+        <div class="jumbotron" style="background-image: url({% static 'zain_bg2.png' %});
+            background-size: cover;background-position: center;background-repeat: no-repeat;">
+
+
+            <!--                <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">-->
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    <img src={% static 'zain_logo.png' %} alt="" height="50">
+                    <h1 class="text-black-50">Self-Registration</h1>
+                    <!--                </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row ml-2 mt-2 bg-danger bg-gradient">
+
+        {% if not form.FIRST_NAME %}
+
+        <div class="jumbotron" id="bgdiv" style="background-image: url({% static 'zain_bg2.png' %});text-black-20;
+            background-size: cover;background-position: center;background-repeat: no-repeat; height:550px">
+
+            {% else %}
+
+            <div class="jumbotron" id="bgdiv" style="background-image: url({% static 'zain_bg2.png' %});text-black-20;
+            background-size: cover;background-position: center;background-repeat: repeat; ">
+
+                {% endif %}
+
+                <form method="post" class="" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {% if form.fields.errors %}
+
+                    <div class="p-3 mb-2 bg-danger text-white ">
+                        {{ form.fields.error }}
+                    </div>
+                    {% endif %}
+
+                    {% crispy form %}
+
+                    <!--  <input type="submit" value="Save">-->
+
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    {% endblock content %}
+
+
+    {% block endjava %}
+
+    <script>
+    setTimeout(function(){
+      if ($('.alert').length > 0) {
+        $('.alert').remove();
+      }
+    }, 30000)
+
+
+
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+
+
+    $("#id_STATE").change(function () {
+        const url = '../county/';  // get the url of the `load_cities` view
+        const states = $(this).val();  // get the selected country ID from the HTML input
+$.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+            data: {
+                'states': states       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+                $("#id_COUNTY").html(data);  // replace the contents of the city input with the data that came from the server
+                $("#id_COUNTY").change();  // to  trigger the PAYAM dropdown
+                  }
+        });
+
+});
+
+$("#id_COUNTY").change( function () {
+        const url = '../payam/';  // get the url of the `load_cities` view
+        const county = $(this).val();  // get the selected country ID from the HTML input
+$.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+            data: {
+                'county': county       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+                $("#id_PAYAM").html(data);  // replace the contents of the city input with the data that came from the server
+                  }
+        });
+});
+
+
+
+
+
+    </script>
+
+    {% endblock endjava %}
